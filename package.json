@@ -1,0 +1,10 @@
+{
+  "name": "gerador_relatorios",
+  "version": "1.0.0",
+  "description": "Projeto de refatoração e melhoria progressiva de um sistema de geração de relatórios.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
