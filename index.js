@@ -22,16 +22,18 @@ const geradores = {
 // Argumentos da linha de comando
 const argumentos = process.argv.slice(2);
 
-const indiceFonte = argumentos.indexOf('--fonte');
-const indiceFormato = argumentos.indexOf('--formato');
+const formato = argumentos
+  .find(arg => arg.startsWith('--format='))
+  ?.slice('--format='.length);
 
-const caminho = indiceFonte >= 0 ? argumentos[indiceFonte + 1] : undefined;
-const formato = indiceFormato >= 0 ? argumentos[indiceFormato + 1] : undefined;
+const caminho = argumentos
+  .find(arg => arg.startsWith('--source='))
+  ?.slice('--source='.length);
 
 try {
-  if (!caminho || !formato) {
+  if (!formato || !caminho) {
     throw new Error(
-      'Uso: node index.js --fonte <arquivo> --formato <html|txt|md>'
+      'Uso: node index.js --format=<html|txt|md> --source=<arquivo>'
     );
   }
 
